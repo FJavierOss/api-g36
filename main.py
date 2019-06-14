@@ -95,4 +95,5 @@ def get_diff_message(not_characters):
 
 
 if os.name == 'nt':
-app.run(debug=True)
+
+    app.run(debug=True)
