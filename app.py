@@ -11,8 +11,8 @@ import datetime
 USERS_KEYS = ['nombre', 'nacimiento', 'correo', 'nacionalidad', 'clave']
 MESSAGE_KEYS = ['message', 'sender', 'receptant', 'lat', 'long', 'date']
 
-mongod = subprocess.Popen('mongod', stdout=subprocess.DEVNULL)
-atexit.register(mongod.kill)
+#mongod = subprocess.Popen('mongod', stdout=subprocess.DEVNULL)
+#atexit.register(mongod.kill)
 
 app = Flask(__name__)
 uri = "mongodb://grupo20:grupo20@146.155.13.149/grupo20?authSource=admin"
