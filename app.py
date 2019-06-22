@@ -42,12 +42,12 @@ def manage_messages(jobj, paint=[]):
 
             elif "message" in par:
                 if isinstance(par[1], str):
-                    rstring += f'\"{par[0]}\": \"{par[1]}\"'
+                    rstring += f',\"{par[0]}\": \"{par[1]}\"'
 
                 else:
-                    rstring += f'\"{par[0]}\": {par[1]}'
+                    rstring += f',\"{par[0]}\": {par[1]}'
             else:
-                rstring += f', \"{par[0]}\": {par[1]}'
+                rstring += f',\"{par[0]}\": {par[1]}'
         rstring += '}<br>'
     return rstring
 
