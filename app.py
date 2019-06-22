@@ -39,6 +39,13 @@ def manage_messages(jobj, paint=[]):
 
                 #elif True in [check in par for check in paint]:
                 #    rstring += f', <font color="red">\"{par[0]}\":</font> {par[1]}'
+
+            elif "message" in par:
+                if isinstance(par[1], str):
+                    rstring += f'{sub_rstring}\"{par[0]}\": \"{par[1]}\"'
+
+                else:
+                    rstring += f'{sub_rstring}\"{par[0]}\": {par[1]}'
             else:
                 rstring += f', \"{par[0]}\": {par[1]}'
         rstring += '}<br>'
