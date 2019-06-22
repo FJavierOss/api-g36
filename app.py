@@ -28,7 +28,7 @@ def manage_messages(jobj, paint=[]):
     if not mmlist:
         return 'No hay mensajes que cumplan los requisitos pedidos'
     rstring = ''
-    return json.dumps(jobj)
+    return json.dumps(jobj.get_json())
     for char in mmlist:
         sub_rstring = '{'
         for par in char.items():
