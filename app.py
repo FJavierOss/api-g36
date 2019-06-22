@@ -48,7 +48,7 @@ def manage_messages(jobj, paint=[]):
                     rstring += f',\"{par[0]}\": {par[1]}'
             else:
                 rstring += f',\"{par[0]}\": {par[1]}'
-        rstring += '}<br>'
+        rstring += '}'
     return rstring
 
 
