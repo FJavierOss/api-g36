@@ -32,8 +32,8 @@ def manage_messages(jobj, paint=[]):
         for par in char.items():
             if "date" in par:
                 rstring += f'{sub_rstring}\"{par[0]}\": {par[1]}'
-            elif True in [check in par for check in paint]:
-                rstring += f', <font color="red">\"{par[0]}\":</font> {par[1]}'
+                #elif True in [check in par for check in paint]:
+                #    rstring += f', <font color="red">\"{par[0]}\":</font> {par[1]}'
             else:
                 rstring += f', \"{par[0]}\": {par[1]}'
         rstring += '}<br>'
