@@ -6,6 +6,7 @@ import os
 import atexit
 import subprocess
 import datetime
+import json
 
 
 USERS_KEYS = ['nombre', 'nacimiento', 'correo', 'nacionalidad', 'clave']
@@ -27,7 +28,7 @@ def manage_messages(jobj, paint=[]):
     if not mmlist:
         return 'No hay mensajes que cumplan los requisitos pedidos'
     rstring = ''
-    return jobj.dumps()
+    return json.dumps(jobj)
     for char in mmlist:
         sub_rstring = '{'
         for par in char.items():
