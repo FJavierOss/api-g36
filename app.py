@@ -77,6 +77,11 @@ def get_users_messages(uid):
     u_messages = list(mensajes.find({"sender" : uid}, {"_id" : 0}))
     return manage_messages(json.jsonify(u_messages), ["sender"])
 
+@app.route("/users_messages_rec/<int:uid>")
+def get_users_messages(uid):
+    u_messages = list(mensajes.find({"receptant" : uid}, {"_id" : 0}))
+    return manage_messages(json.jsonify(u_messages), ["receptant"])
+
 @app.route("/chat/<string:uids>")
 def get_chat_between(uids):
     uids = uids.split('&&')
