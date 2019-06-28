@@ -154,7 +154,7 @@ def delete_message(mid):
     #print(resp)
 
     resultado = [{"mensaje": messaje}]
-return render_template('pop_message.html', resultado = messaje)
+return manage_messages(json.jsonify(resultado), ["pop_message"])
 
 
 if os.name == 'nt':
