@@ -154,7 +154,7 @@ def delete_message(mid):
     #print(resp)
 
     resultado = [{"mensaje": messaje}]
-return manage_messages(json.jsonify(resultado), ["pop_message"])
+    return manage_messages(json.jsonify(resultado), ["pop_message"])
 
 
 if os.name == 'nt':
