@@ -115,6 +115,47 @@ def get_diff_message(not_characters):
     unique_messages = [char for char in all_messages if char not in not_messages]
     return manage_messages(json.jsonify(unique_messages), ["message"])
 
+@app.route("/add_message/<string:attrs>", methods=['GET', 'POST'])
+def add_message(attrs):
+    #print(id_1, id_2, contenido, mensajes.count_documents({}) + 1, datetime.datetime.now().date())
+    attrs = attrs.split('&&')
+    dict_message = {"mid": mensajes.count_documents({}) + 1 , "sender": int(attrs[0]),
+    "receptant": int(attrs[1]), "date": str(datetime.datetime.now().date()),
+    "lat": float(attrs[2]), "long": float(attrs[3]),
+    "message": attrs[4]}
+    check = True
+    if not(attrs[0].isdigit() and attrs[1].isdigit()):
+        check = False
+
+    if check and mensajes.insert_one(dict_message):
+        mensajje = "Mensaje creado"
+        success = True
+
+    else:
+        mensajje = "No se pudo crear el mensaje"
+        success = False
+
+    resultado = [{"mensaje": mensajje, "resultado": success}]
+
+
+    return manage_messages(json.jsonify(resultado), ["add_message"])
+
+
+@app.route('/pop_message/<int:mid>', methods=['POST', 'GET', 'DELETE'])
+def delete_message(mid):
+    #print("Entra")
+    #print(mid)
+    resp = mensajes.delete_one({"mid" : int(mid)})
+
+    if resp.deleted_count:
+        messaje = f'Mensaje con id={mid} ha sido eliminado'
+    else:
+        messaje = f'No se han eliminado mensajes'
+    #print(resp)
+
+    resultado = [{"mensaje": messaje}]
+return render_template('pop_message.html', resultado = messaje)
+
 
 if os.name == 'nt':
     app.run(debug=True)
