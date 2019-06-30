@@ -117,9 +117,9 @@ def get_diff_message(not_characters):
 
 @app.route("/msgs_location/<string:msg_info>")
 def get_messages_location(msg_info):
-    return(msg_info)
     msg_info = msg_info.split('&&')
     uid = int(msg_info[0])
+    return(str(uid))
     all_msgs = list(mensajes.find({"sender":uid},{}))
     date_min = datetime.datetime.strptime(msg_info[1][2:],"%y-%m-%d")
     date_max = datetime.datetime.strptime(msg_info[2][2:],"%y-%m-%d")
