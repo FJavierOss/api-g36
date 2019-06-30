@@ -120,7 +120,7 @@ def get_messages_location(msg_info):
     msg_info = msg_info.split('&&')
     uid = int(msg_info[0])
     all_msgs = list(mensajes.find({"sender":uid},{}))
-    return(str(all_msgs))
+    return(str(type(all_msgs[0]["_id"])))
     date_min = datetime.datetime.strptime(msg_info[1][2:],"%y-%m-%d")
     date_max = datetime.datetime.strptime(msg_info[2][2:],"%y-%m-%d")
     res_msgs = [x for x in all_msgs if date_min < datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") and date_max > datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") ]
