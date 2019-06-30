@@ -122,9 +122,8 @@ def get_messages_location(msg_info):
     all_msgs = list(mensajes.find({"sender":uid}, {"_id" : 0}))
     date_min = datetime.datetime.strptime(msg_info[1][2:],"%y-%m-%d")
     date_max = datetime.datetime.strptime(msg_info[2][2:],"%y-%m-%d")
-    return "ok"
     res_msgs = [x for x in all_msgs if date_min < datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") and date_max > datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") ]
-    print(type(res_msgs))
+    return str(res_msgs)
     return manage_messages(json.jsonify(res_msgs), ["message"])
 
 @app.route("/add_message/<string:attrs>", methods=['GET', 'POST'])
