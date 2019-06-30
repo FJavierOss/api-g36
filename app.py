@@ -115,6 +115,19 @@ def get_diff_message(not_characters):
     unique_messages = [char for char in all_messages if char not in not_messages]
     return manage_messages(json.jsonify(unique_messages), ["message"])
 
+@app.route("/msgs_location/<string:msg_info>")
+def get_messages_location(msg_info):
+    msg_info = msg_info.split('&&')
+    uid = int(msg_info[0])
+    all_msgs = list(mensajes.find({"sender":uid}, {"_id" : 0}))
+    date_min = datetime.datetime.strptime(msg_info[1][2:],"%y-%m-%d")
+    date_max = datetime.datetime.strptime(msg_info[2][2:],"%y-%m-%d")
+    res_msgs = [x for x in all_msgs if date_min < datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") and date_max > datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") ]
+    print("tipo 1: " + res_msgs)    
+    print("tipo 2: " + type(json.dumps(res_msgs)))
+    return str(res_msgs)
+    return manage_messages(json.jsonify(res_msgs), ["message"])
+
 @app.route("/add_message/<string:attrs>", methods=['GET', 'POST'])
 def add_message(attrs):
     #print(id_1, id_2, contenido, mensajes.count_documents({}) + 1, datetime.datetime.now().date())
