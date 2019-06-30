@@ -119,8 +119,8 @@ def get_diff_message(not_characters):
 def get_messages_location(msg_info):
     msg_info = msg_info.split('&&')
     uid = int(msg_info[0])
-    return(str(uid))
     all_msgs = list(mensajes.find({"sender":uid},{}))
+    return(str(all_msgs))
     date_min = datetime.datetime.strptime(msg_info[1][2:],"%y-%m-%d")
     date_max = datetime.datetime.strptime(msg_info[2][2:],"%y-%m-%d")
     res_msgs = [x for x in all_msgs if date_min < datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") and date_max > datetime.datetime.strptime(x["date"][2:],"%y-%m-%d") ]
