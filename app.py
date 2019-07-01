@@ -145,7 +145,7 @@ def add_message(attrs):
         mensajje = "No se pudo crear el mensaje"
         success = False
 
-    resultado = [{"mensaje": mensajje, "resultado": success}]
+    resultado = [{"mensaje": mensajje}]
 
 
     return manage_messages(json.jsonify(resultado), ["add_message"])
